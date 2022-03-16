@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 추가 -->
+<jsp:useBean id="calc" class="calc.CalcBean" scope="page"/>
+<jsp:setProperty name="calc" property="*"/>
+<%  // 자바 코드 기술
+	calc.calculate();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +19,7 @@
 	<br><br>
 	<form name="calcForm" method="POST">
 		<input type="text" name="num1" width="200" size="5"/>
-		<select name="operator">
+		<select name="operatorStr">
 			<option selected>선택</option>
 			<option>+</option>
 			<option>-</option>
@@ -25,7 +31,7 @@
 		<input type="reset" value="다시 입력"/>
 	</form>
 	<br>
-	계산결과 : 
+	계산결과 : <jsp:getProperty name="calc" property="result"/>
 	</center>
 </body>
 </html>
